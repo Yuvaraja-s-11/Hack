@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Access</title>
+
+<style>
+body {
+  background: black;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 15px;
+  overflow: hidden;
+}
+#terminal {
+  white-space: pre-line;
+}
+.blink {
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+<div id="terminal"></div>
+
+<script>
+let lines = [
+"[BOOT] Initializing secure kernel...",
+"[OK] Memory check: 8192MB",
+"[OK] Network interface detected",
+"[CONNECTING] Remote server...",
+"[ACCESS GRANTED]",
+"[SCANNING DEVICE...]",
+"[✔] Photos accessed",
+"[✔] Contacts synced",
+"[✔] Messages decrypted",
+"[UPLOADING DATA...] 32%",
+"[UPLOADING DATA...] 67%",
+"[UPLOADING DATA...] 99%",
+"[COMPLETE]",
+"",
+"⚠️ Device temporarily compromised ⚠️"
+];
+
+let i = 0;
+let speed = 800;
+
+function typeLine() {
+  if (i < lines.length) {
+    document.getElementById("terminal").innerHTML += lines[i] + "\n";
+    i++;
+    setTimeout(typeLine, speed);
+  } else {
+    document.getElementById("terminal").innerHTML += "\n> _";
+  }
+}
+typeLine();
+</script>
+
+</body>
+</html>
